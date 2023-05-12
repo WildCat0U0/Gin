@@ -2,6 +2,7 @@ package routers
 
 import (
 	"awesomeProject/test1/pkg/setting"
+	"awesomeProject/test1/routers/api"
 	v1 "awesomeProject/test1/routers/api/v1"
 	"github.com/gin-gonic/gin"
 )
@@ -14,6 +15,8 @@ func InitRouter() *gin.Engine {
 	r.Use(gin.Recovery())
 
 	gin.SetMode(setting.RunMode)
+
+	r.GET("/auth", api.GetAuth)
 
 	//r.GET("/test", func(c *gin.Context) {
 	//	c.JSON(200, gin.H{
