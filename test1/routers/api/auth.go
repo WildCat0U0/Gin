@@ -63,10 +63,10 @@ package api
 import (
 	"awesomeProject/test1/models"
 	"awesomeProject/test1/pkg/e"
+	"awesomeProject/test1/pkg/logging"
 	"awesomeProject/test1/pkg/util"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
-	"log"
 	"net/http"
 )
 
@@ -98,7 +98,7 @@ func GetAuth(c *gin.Context) {
 		}
 	} else {
 		for _, err := range valid.Errors {
-			log.Println(err.Key, err.Message)
+			logging.Info(err.Key, err.Message) // err.Key is "Username" or "Password"
 		}
 	}
 	c.JSON(http.StatusOK, gin.H{
